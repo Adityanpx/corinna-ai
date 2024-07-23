@@ -10,7 +10,13 @@ const Layout = async ({ Children}: Props) => {
     const user = await currentUser()
 
     if (user) redirect('/')
-    return <div> Layout</div>
+    return <div className="h-screen w-full flex justify-center"> 
+
+         <div className="w-[600px] ld:w-full flex flex-col items-start p-6">
+            
+            Layout
+        </div>
+        </div>
 }
 
 export default Layout
