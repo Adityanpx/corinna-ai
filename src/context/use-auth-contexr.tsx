@@ -1,3 +1,4 @@
+import SignUpFormProvider from '@/components/forms/sign-up/form-provider';
 import React, {Children, useState} from 'react';
 
 type InitialValuesProps = {
@@ -21,5 +22,19 @@ export const AuthContextProvider = ({
 }:{
     children: React.ReactNode
 }) => {
-    
+    const [currentStep, setCurrentstep] = useState<number>(
+        InitialValues.currentStep
+    )
+    const values = {
+        currentStep,setCurrentstep,
+    }
+    return <provider value={values} > {Children} </provider>
+
 }
+
+export const useAuthContextHook = () => {
+    const state = React.useContext(authContext)
+    return state
+}
+
+export default SignUpFormProvider
