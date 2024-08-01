@@ -1,17 +1,27 @@
+"use client"
+import { AuthContextProvider } from '@/context/use-auth-context'
+import { useSignUpForm } from '@/hooks/sign-up/use-sign-up'
 import React from 'react'
+import { FormProvider } from 'react-hook-form'
+import { Loader } from 'lucide-react'// Ensure this import is correct and the Loader component exists
 
-type Props = {}
+type Props = {
+  children: React.ReactNode
+}
 
-const SignUp = (props: Props) => {
+const SignUpFormProvider = ({ children }: Props) => {
+  const { methods, onHandleSubmit, loading } = useSignUpForm()
   return (
-    <div className='flex-1 py-36 md:px-16 w-full'>
-      <div className='flex flex-col h-full gap-3'>
-        <SignUpFormProvider></SignUpFormProvider>
-
-      </div>
-      
-    </div>
+    <AuthContextProvider>
+      <FormProvider {...methods}>
+        <form onSubmit={onHandleSubmit} className='h-full'>
+          <div className='flex flex-col justify-between gap-3 h-full'>
+            <Loader loading={loading}>{children}</Loader>
+          </div>
+        </form>
+      </FormProvider>
+    </AuthContextProvider>
   )
 }
 
-export default SignUp
+export default SignUpFormProvider

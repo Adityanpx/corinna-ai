@@ -28,3 +28,8 @@ const TooltipContent = React.forwardRef<
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+out that particular techni
+
+function EventHandler(){
+  console.log("print hello Aditya...the direction you are facing is really worth it...? <br> what do you think ab")
+}
